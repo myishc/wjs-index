@@ -1,0 +1,407 @@
+@main-color: #e92322;
+
+a {
+    color: #666666;
+
+    &:hover {
+        text-decoration: none;
+        color: #666666;
+        // background-color: #fff;
+    }
+
+    &:focus {
+        color: #666666;
+        text-decoration: none;
+    }
+}
+
+#header {
+    box-shadow: 0px 0px 1px @main-color;
+
+    .hrow {
+        line-height: 45px;
+
+        div {
+            position: relative;
+
+            a {
+                margin-left: 10px;
+
+                &:hover {
+                    img {
+                        display: block;
+                    }
+                }
+
+                img {
+                    position: absolute;
+                    top: 40px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    z-index: 100;
+                    display: none;
+                }
+            }
+        }
+
+        & div:nth-child(n+2) {
+            border-left: 1px solid @main-color;
+        }
+    }
+}
+
+
+
+#nav {
+    padding: 30px 0;
+
+    .navbar-header {
+        button {
+            border: 1px #ccc solid;
+
+            .icon-bar {
+                background-color: #ccc;
+            }
+        }
+
+        .navbar-brand {
+            .icon-icon {
+                color: @main-color;
+                font-size: 30px;
+            }
+
+            .icon-logo {
+                color: #000;
+                font-size: 30px;
+            }
+        }
+    }
+
+    .navbar-collapse {
+        .navbar-nav {
+            li {
+
+
+                a {
+                    background-color: #fff;
+                    border-bottom: 2px solid transparent;
+                }
+
+                &.active {
+                    a {
+                        border-bottom: 2px solid @main-color;
+                    }
+                }
+
+                &:hover {
+                    a {
+                        background-color: #fff;
+                        border-bottom: 2px solid @main-color;
+                    }
+
+                }
+            }
+
+        }
+
+        .navbar-right {
+            li {
+                a {}
+            }
+        }
+    }
+}
+
+// 轮播图模块
+#slide {
+
+    @media(min-width: 768px) {
+        /* 只是由于大图片设置了定位导致父元素没有高度 需要强制设置 
+          但是小图片超小屏幕下是不需要高度 因为小图片没有定位 会撑开父元素的高
+          只需要设置屏幕宽度768 小 中大 屏幕 设置高度使用媒体查询添加高度 */
+        .item {
+            /* 相对定位不能写死 因为图片正在切换的时候 
+            是没有相对定位的样式 等图片切换完成后才加上相对定位 */
+            height: 410px;
+            /* 可以给大图片的容器item设置overflow:hidden 让超出左右2边的一截图片裁切掉 */
+            // overflow: hidden;
+        }
+    }
+    .img {
+        width: 100%;
+        height: 410px;
+        background-position: center center;
+    }
+    img {
+        width: 100%;
+    }
+
+}
+// 特色模块
+
+#feature{
+    padding: 40px 0;
+    .container{
+        .row{
+            >div{
+                margin-bottom: 10px;
+            }
+        }
+    }
+}
+
+#booking{
+    border-top: 1px solid #666666;
+    border-bottom: 1px solid #666666;
+    padding: 20px 0;
+    .container{
+        .pull-left{
+            p{
+                i,span,a{
+                    color: @main-color;
+                }
+            }
+        }
+        .pull-right{
+            p{
+                a{
+                    color: @main-color;
+                }
+            }
+        }
+    }
+}
+// 产品模块
+#products {
+    background-color: #f5f5f5;
+    padding: 40px;
+
+    .nav-tabs {
+        li {
+            a {
+                font-size: 18px;
+                border: 1px solid transparent;
+
+                &:hover {
+                    background-color: #fff;
+                    color: @main-color;
+                }
+            }
+
+            &.active {
+                a {
+                    border-bottom: 2px solid #e92322;
+                }
+
+            }
+        }
+
+    }
+
+    .tab-content {
+
+        .tab-pane {
+
+            &.active {}
+
+            .row {
+
+                >div {
+
+                    .product {
+                        display: flex;
+                        background-color: #fff;
+                        margin-top: 20px;
+
+                        &.active {
+                            background-color: #e92322;
+                            color: #fff;
+                            position: relative;
+
+                            &::before {
+                                content: "\e915";
+                                font-family: 'itcast';
+                                font-size: 30px;
+                                position: absolute;
+                                left: 0;
+                                top: -6px;
+                            }
+                        }
+
+                        .left {
+                            flex: 1;
+                            padding: 0 20px;
+
+                            h3 {
+                                text-align: center;
+
+                            }
+
+                            .row {
+                                >div {
+                                    &:nth-child(2n) {
+                                        text-align: right;
+                                    }
+
+                                    p {
+                                        margin-bottom: 5px;
+                                    }
+                                }
+                            }
+                        }
+
+                        .right {
+                            height: 160px;
+                            width: 100px;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            align-items: center;
+                            border-left: 1px dashed #ccc;
+                            position: relative;
+
+                            p {
+                                strong {
+                                    font-size: 30px;
+                                }
+                            }
+
+                            &::after,
+                            &::before {
+                                content: '';
+                                position: absolute;
+                                width: 16px;
+                                height: 16px;
+                                border-radius: 8px;
+                                background-color: #f5f5f5;
+                                left: -8px;
+                            }
+
+                            &::after {
+                                top: -8px;
+                            }
+
+                            &::before {
+                                bottom: -8px;
+                            }
+
+                            .tooltips {
+                                position: absolute;
+                                width: 90%;
+                                top: 10px;
+                                text-align: center;
+
+                                button {
+                                    &:first-child {
+                                        border: 1px solid #e92322;
+                                        color: yellow;
+                                    }
+
+                                    &:last-of-type {
+                                        border: 1px solid yellow;
+                                        color: #e92322;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+#news {
+    padding: 40px 10px;
+
+    .row {
+        >div {
+            h4 {
+                border-bottom: 1px dashed #ccc;
+                text-align: center;
+                line-height: 40px;
+                position: relative;
+
+                &::after {
+                    content: '';
+                    width: 10px;
+                    height: 10px;
+                    position: absolute;
+                    border-radius: 50%;
+                    border: 1px solid #ccc;
+                    right: -10px;
+                    bottom: -5px;
+                }
+            }
+
+            .nav-tabs {
+                @media(max-width: 992px) {
+                    li {
+                        width: 25%;
+
+                        a {
+                            display: block;
+                            margin: 0 auto;
+                            width: 60px;
+                            height: 60px;
+                        }
+                    }
+                }
+
+                li {
+                    a {
+                        display: block;
+                        background-color: #e92322;
+                        border-radius: 50%;
+                        border: none;
+                        margin-bottom: 10px;
+
+                        i {
+                            color: #ccc;
+                            font-size: 30px;
+                        }
+                    }
+                }
+            }
+
+            .tab-content {
+                padding-left: 50px;
+
+                >div {
+                    p {
+                        line-height: 30px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+#partner {
+    text-align: center;
+
+    h2 {}
+
+    .container {
+
+        .row {
+            display: flex;
+
+            // justify-content: space-around;
+            >div {
+
+                // margin-right: 5px;
+                a {
+
+                    i {
+                        font-size: 70px;
+                        // margin-left: 20px;
+                    }
+                }
+            }
+        }
+    }
+}
